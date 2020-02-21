@@ -7,8 +7,8 @@ import ErrorList from "../../components/ErrorList";
 export default function Login(props) {
   const [email, emailProps] = useInput();
   const [password, passwordProps] = useInput();
-  const {errors} = props
-  
+  const { errors } = props
+
   const login = (e) => {
     e.preventDefault();
     Inertia.post('/login', {
@@ -24,15 +24,15 @@ export default function Login(props) {
         <div className="flex flex-col">
           <div>
             <label htmlFor="email">Email: </label>
-            <input {...emailProps} className={`border ${useHasError(errors, "email")  ? 'border-red-500' : ''}`} type="email" id="email"/>
-            {useHasError(errors, "email") && <ErrorList errors={errors['email']}/>}
+            <input {...emailProps} className={`border ${useHasError(errors, "email") ? 'border-red-500' : ''}`} type="email" id="email" />
+            {useHasError(errors, "email") && <ErrorList errors={errors['email']} />}
           </div>
           <div>
             <label htmlFor="password">Password: </label>
-            <input {...passwordProps} className={`border ${useHasError(errors, "password") ? 'border-red-500' : ''}`} type="password" id="password"/>
-            {useHasError(errors, "password") && <ErrorList errors={errors['password']}/>}
+            <input {...passwordProps} className={`border ${useHasError(errors, "password") ? 'border-red-500' : ''}`} type="password" id="password" />
+            {useHasError(errors, "password") && <ErrorList errors={errors['password']} />}
           </div>
-          <input type="submit" value="Login"/>
+          <input type="submit" value="Login" />
         </div>
       </form>
     </div>

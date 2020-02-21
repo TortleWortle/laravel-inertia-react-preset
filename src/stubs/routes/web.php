@@ -14,12 +14,12 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', function () {
     return Inertia::render('welcome');
 });
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
     Route::get(RouteServiceProvider::HOME, 'HomeController@index');
 });

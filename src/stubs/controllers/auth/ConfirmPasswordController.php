@@ -9,7 +9,7 @@ use Inertia\Inertia;
 
 class ConfirmPasswordController extends Controller
 {
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Confirm Password Controller
     |--------------------------------------------------------------------------
@@ -20,28 +20,29 @@ class ConfirmPasswordController extends Controller
     |
     */
 
-    use ConfirmsPasswords {
-      showConfirmForm as protected showConfirmForm;
-    }
+  use ConfirmsPasswords {
+    showConfirmForm as protected showConfirmForm;
+  }
 
-    public function showConfirmForm() {
-      return Inertia::render("auth/confirm_password");
-    }
+  public function showConfirmForm()
+  {
+    return Inertia::render("auth/confirm_password");
+  }
 
-    /**
-     * Where to redirect users when the intended url fails.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+  /**
+   * Where to redirect users when the intended url fails.
+   *
+   * @var string
+   */
+  protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
 }

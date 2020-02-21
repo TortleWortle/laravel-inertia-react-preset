@@ -8,7 +8,7 @@ use Inertia\Inertia;
 
 class ForgotPasswordController extends Controller
 {
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
     |--------------------------------------------------------------------------
@@ -19,16 +19,15 @@ class ForgotPasswordController extends Controller
     |
     */
 
-    use SendsPasswordResetEmails {
-      showLinkRequestForm as traitShowLinkRequestForm;
-    }
+  use SendsPasswordResetEmails {
+    showLinkRequestForm as traitShowLinkRequestForm;
+  }
 
-    /**
-     * @return \Inertia\Response
-     */
-    public function showLinkRequestForm()
-    {
-        return Inertia::render('auth/forgot_password');
-    }
-
+  /**
+   * @return \Inertia\Response
+   */
+  public function showLinkRequestForm()
+  {
+    return Inertia::render('auth/forgot_password');
+  }
 }

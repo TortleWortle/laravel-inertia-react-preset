@@ -6,8 +6,8 @@ import ErrorList from "../../components/ErrorList";
 
 export default function ForgotPassword(props) {
   const [email, emailProps] = useInput();
-  const {errors} = props
-  
+  const { errors } = props
+
   const login = (e) => {
     e.preventDefault();
     Inertia.post('/password/email', {
@@ -23,10 +23,10 @@ export default function ForgotPassword(props) {
         <div className="flex flex-col">
           <div>
             <label htmlFor="email">Email: </label>
-            <input {...emailProps} className={`border ${useHasError(errors, "email")  ? 'border-red-500' : ''}`} type="email" id="email"/>
-            {useHasError(errors, "email") && <ErrorList errors={errors['email']}/>}
+            <input {...emailProps} className={`border ${useHasError(errors, "email") ? 'border-red-500' : ''}`} type="email" id="email" />
+            {useHasError(errors, "email") && <ErrorList errors={errors['email']} />}
           </div>
-          <input type="submit" value="Send Email"/>
+          <input type="submit" value="Send Email" />
         </div>
       </form>
     </div>

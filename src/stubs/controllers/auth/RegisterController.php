@@ -24,11 +24,12 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers {
-      showRegistrationForm as protected showRegistrationForm;
+        showRegistrationForm as protected showRegistrationForm;
     }
 
-    public function showRegistrationForm() {
-      return Inertia::render("auth/register");
+    public function showRegistrationForm()
+    {
+        return Inertia::render("auth/register");
     }
 
     /**

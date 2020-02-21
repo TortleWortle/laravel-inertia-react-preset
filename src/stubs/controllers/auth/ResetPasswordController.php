@@ -9,7 +9,7 @@ use Inertia\Inertia;
 
 class ResetPasswordController extends Controller
 {
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
     |--------------------------------------------------------------------------
@@ -20,18 +20,19 @@ class ResetPasswordController extends Controller
     |
     */
 
-    use ResetsPasswords {
-      showResetForm as protected showResetForm;
-    }
+  use ResetsPasswords {
+    showResetForm as protected showResetForm;
+  }
 
-    public function showResetForm($token, $request) {
-      return Inertia::render("auth/login", ['token' => $token, 'email' => $request->email]);
-    }
+  public function showResetForm($token, $request)
+  {
+    return Inertia::render("auth/login", ['token' => $token, 'email' => $request->email]);
+  }
 
-    /**
-     * Where to redirect users after resetting their password.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+  /**
+   * Where to redirect users after resetting their password.
+   *
+   * @var string
+   */
+  protected $redirectTo = RouteServiceProvider::HOME;
 }

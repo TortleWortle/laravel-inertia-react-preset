@@ -9,7 +9,7 @@ use Inertia\Inertia;
 
 class LoginController extends Controller
 {
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Login Controller
     |--------------------------------------------------------------------------
@@ -20,28 +20,29 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers {
-      showLoginForm as protected showLoginForm;
-    }
+  use AuthenticatesUsers {
+    showLoginForm as protected showLoginForm;
+  }
 
-    public function showLoginForm() {
-      return Inertia::render("auth/login");
-    }
+  public function showLoginForm()
+  {
+    return Inertia::render("auth/login");
+  }
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+  /**
+   * Where to redirect users after login.
+   *
+   * @var string
+   */
+  protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->middleware('guest')->except('logout');
+  }
 }
