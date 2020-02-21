@@ -1,6 +1,6 @@
 <?php
 
-namespace InertiaReact;
+namespace TortleWortle\InertiaReactPreset;
 
 use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
 use Illuminate\Support\Facades\File;

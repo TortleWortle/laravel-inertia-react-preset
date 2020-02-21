@@ -1,6 +1,6 @@
 <?php
 
-namespace InertiaReact;
+namespace TortleWortle\InertiaReactPreset;
 
 use Illuminate\Foundation\Console\PresetCommand;
 use Illuminate\Support\ServiceProvider;
