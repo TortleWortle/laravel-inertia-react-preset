@@ -20,3 +20,9 @@ mix.react('resources/js/app.js', 'public/js')
         output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
     })
     .version();
+
+// https://browsersync.io/docs/options/
+mix.browserSync({
+    proxy: '%VALET_URL%',
+    ws: false
+});

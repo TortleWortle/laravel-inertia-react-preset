@@ -25,7 +25,7 @@ class ConfirmPasswordController extends Controller
     }
 
     public function showConfirmForm() {
-      Inertia::render("auth/confirm_password");
+      return Inertia::render("auth/confirm_password");
     }
 
     /**

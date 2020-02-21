@@ -15,7 +15,7 @@ class Preset extends LaravelPreset
 
     // Update package.json with stuff needed
     static::updatePackages();
-    
+
     // Update some service providers to add inertia features
     static::updateServiceProviders();
 
@@ -39,11 +39,13 @@ class Preset extends LaravelPreset
   }
 
 
-  public static function setupRoutes() {
+  public static function setupRoutes()
+  {
     copy(__DIR__ . "/stubs/routes/web.php", base_path('/routes/web.php'));
   }
 
-  public static function setupControllers() {
+  public static function setupControllers()
+  {
     copy(__DIR__ . "/stubs/controllers/auth/ConfirmPasswordController.php", base_path('/app/Http/Controllers/Auth/ConfirmPasswordController.php'));
     copy(__DIR__ . "/stubs/controllers/auth/ForgotPasswordController.php", base_path('/app/Http/Controllers/Auth/ForgotPasswordController.php'));
     copy(__DIR__ . "/stubs/controllers/auth/LoginController.php", base_path('/app/Http/Controllers/Auth/LoginController.php'));
@@ -80,20 +82,31 @@ class Preset extends LaravelPreset
   {
     return [
       '@babel/preset-react' => '^7.0.0',
-      'react' => '^16.12.0',
-      'react-dom' => '^16.12.0',
-      'laravel-mix-tailwind' => '^0.1.0',
-      'tailwindcss' => '^1.2.0',
+      "@babel/plugin-syntax-dynamic-import" => "^7.8.3",
       "@inertiajs/inertia" => "^0.1.7",
       "@inertiajs/inertia-react" => "^0.1.4",
-      "@babel/plugin-syntax-dynamic-import" => "^7.8.3",
+      'react' => '^16.12.0',
+      'react-dom' => '^16.12.0',
+      "browser-sync" => "^2.26.7",
+      "browser-sync-webpack-plugin" => "^2.0.1",
+      'laravel-mix-tailwind' => '^0.1.0',
+      'tailwindcss' => '^1.2.0',
     ] + Arr::except($packages, ["lodash", "sass-loader", "sass", "axios"]);
   }
 
   public static function setupMix()
   {
+    // Read contents of the webpack stub
+    $contents = file_get_contents(__DIR__ . "/stubs/webpack.mix.js");
+
+    // Replace %VALET_URL% with the default valet url
+    $splat = explode("/", base_path());
+    $base_url = $splat[array_key_last($splat)];
+    $url = strtolower($base_url . ".test");
+    $contents = str_replace("%VALET_URL%", $url, $contents);
+
+    File::put(base_path('webpack.mix.js'), $contents);
     copy(__DIR__ . "/stubs/tailwind.config.js", base_path('tailwind.config.js'));
-    copy(__DIR__ . "/stubs/webpack.mix.js", base_path('webpack.mix.js'));
     copy(__DIR__ . "/stubs/.babelrc", base_path('.babelrc'));
   }
 

@@ -26,7 +26,7 @@ class InertiaReactServiceProvider extends ServiceProvider
     {
         PresetCommand::macro("inertia_react", function($command) {
             Preset::install();
-            $command->info("Yeet");
+            $command->info("Preset installed successfully.\nDon't forget to run:\nnpm install && npm run dev");
         });
     }
 }

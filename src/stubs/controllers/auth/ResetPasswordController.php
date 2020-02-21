@@ -24,8 +24,8 @@ class ResetPasswordController extends Controller
       showResetForm as protected showResetForm;
     }
 
-    public function showResetForm() {
-      return Inertia::render("auth/reset_password");
+    public function showResetForm($token, $request) {
+      return Inertia::render("auth/login", ['token' => $token, 'email' => $request->email]);
     }
 
     /**
