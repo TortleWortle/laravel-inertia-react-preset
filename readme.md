@@ -2,8 +2,8 @@
 Installs react, inertiajs and tailwind.
 
 Usage:
-first install inertia-laravel and the preset
-`composer require inertiajs/inertia-laravel tortlewortle/laravel-inertia-react-preset`
+first install the preset
+`tortlewortle/laravel-inertia-react-preset`
 
 Run the preset:
 `php artisan preset inertia_react`

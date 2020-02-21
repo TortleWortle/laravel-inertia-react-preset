@@ -9,7 +9,9 @@
             "email": "bas.kuipers@me.com"
         }
     ],
-    "require": {},
+    "require": {
+        "inertiajs/inertia-laravel": "^0.2.4"
+    },
     "autoload": {
         "psr-4": {
             "TortleWortle\\InertiaReactPreset\\": "src"
