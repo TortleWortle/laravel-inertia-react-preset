@@ -10,7 +10,10 @@
         }
     ],
     "require": {
-        "inertiajs/inertia-laravel": "^0.2.4"
+        "inertiajs/inertia-laravel": "^0.2.4",
+        "illuminate/console": "^6.16",
+        "illuminate/filesystem": "^6.16",
+        "illuminate/support": "^6.16"
     },
     "autoload": {
         "psr-4": {
