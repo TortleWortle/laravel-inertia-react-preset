@@ -1,0 +1,13 @@
+{
+    "name": "tortlewortle/laravel-inertia-react-preset",
+    "description": "A Laravel preset for scaffolding InertiaJS and React (+ tailwind).",
+    "license": "MIT",
+    "keywords": ["laravel", "laravel preset", "inertiajs", "inertia", "react", "reactjs", "tailwind"],
+    "authors": [
+        {
+            "name": "TortleWortle",
+            "email": "bas.kuipers@me.com"
+        }
+    ],
+    "require": {}
+}
