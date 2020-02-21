@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 
 require('laravel-mix-tailwind');
+require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ mix.react('resources/js/app.js', 'public/js')
     .webpackConfig({
         output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
     })
+    .purgeCss()
     .version();
 
 // https://browsersync.io/docs/options/

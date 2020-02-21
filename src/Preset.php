@@ -91,6 +91,7 @@ class Preset extends LaravelPreset
       "browser-sync-webpack-plugin" => "^2.0.1",
       'laravel-mix-tailwind' => '^0.1.0',
       'tailwindcss' => '^1.2.0',
+      "laravel-mix-purgecss" => "^5.0.0-rc.1",
     ] + Arr::except($packages, ["lodash", "sass-loader", "sass", "axios"]);
   }
 
