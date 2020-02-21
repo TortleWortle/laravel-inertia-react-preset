@@ -21,3 +21,4 @@ Hot Reloading
 ```bash
 npm run hot
 ```
+Inspired by a similarly named package from [ravenberg](https://github.com/ravenberg/laravel-inertia-react-preset) <3
