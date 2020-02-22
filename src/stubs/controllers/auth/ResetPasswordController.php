@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\Request;
 
 class ResetPasswordController extends Controller
 {
@@ -24,9 +25,9 @@ class ResetPasswordController extends Controller
     showResetForm as protected showResetForm;
   }
 
-  public function showResetForm($token, $request)
+  public function showResetForm(Request $request, $token)
   {
-    return Inertia::render("auth/login", ['token' => $token, 'email' => $request->email]);
+    return Inertia::render("auth/reset_password", ['token' => $token, 'email' => $request->email]);
   }
 
   /**
