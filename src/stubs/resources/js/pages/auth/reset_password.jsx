@@ -2,7 +2,7 @@ import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { useInput } from "../../hooks/useInput";
 import { useHasError } from "../../hooks/useHasError";
-import ErrorList from "../../components/ErrorList";
+import { FormTextInput, FormLabel, FormCopyright, FormButton, FormFieldErrors } from "../../components/FormElements"
 
 export default function ResetPassword(props) {
   const [email, emailProps] = useInput(props.email);
@@ -10,7 +10,7 @@ export default function ResetPassword(props) {
   const [password_confirmation, password_confirmationProps] = useInput();
   const { errors } = props
 
-  const login = (e) => {
+  const reset = (e) => {
     e.preventDefault();
     Inertia.post('/password/reset', {
       token: props.token,
@@ -21,29 +21,30 @@ export default function ResetPassword(props) {
   }
 
   return (
-    <div className="container mx-auto">
-      <h1>Login</h1>
-      <form onSubmit={login}>
-        <div className="flex flex-col">
-          <input disabled type="hidden" value={props.token} />
-          <div>
-            <label htmlFor="email">Email: </label>
-            <input disabled {...emailProps} className={`border ${useHasError(errors, "email") ? 'border-red-500' : ''}`} type="email" id="email" />
-            {useHasError(errors, "email") && <ErrorList errors={errors['email']} />}
-          </div>
-          <div>
-            <label htmlFor="password">Password: </label>
-            <input {...passwordProps} className={`border ${useHasError(errors, "password") ? 'border-red-500' : ''}`} type="password" id="password" />
-            {useHasError(errors, "password") && <ErrorList errors={errors['password']} />}
-          </div>
-          <div>
-            <label htmlFor="password_confirmation">Confirm Password: </label>
-            <input {...password_confirmationProps} className={`border ${useHasError(errors, "password_confirmation") && 'border-red-500'}`} type="password" id="password_confirmation" />
-            {useHasError(errors, "password_confirmation") && <ErrorList errors={errors['password_confirmation']} />}
-          </div>
-          <input type="submit" value="Reset Password" />
+    <div className="w-full max-w-xs mx-auto md:mt-32">
+      <form onSubmit={reset} className="bg-white shadow-md rounded px-8 pt-6 pb-8">
+        <div className="mb-4">
+          <FormLabel htmlFor="email">Email: </FormLabel>
+          <FormTextInput {...emailProps} hasError={useHasError(errors, "email")} type="email" id="email" />
+          <FormFieldErrors field="email" errors={errors}/>
+        </div>
+        <div className="mb-4">
+          <FormLabel htmlFor="password">Password: </FormLabel>
+          <FormTextInput {...passwordProps} hasError={useHasError(errors, "password")} type="password" id="password" />
+          <FormFieldErrors field="password" errors={errors}/>
+        </div>
+        <div className="mb-6">
+          <FormLabel htmlFor="password_confirmation">Password Confirmation: </FormLabel>
+          <FormTextInput {...password_confirmationProps} hasError={useHasError(errors, "password_confirmation")} type="password" id="password_confirmation" />
+          <FormFieldErrors field="password_confirmation" errors={errors}/>
+        </div>
+        <div className="flex items-center justify-between">
+            <FormButton type="submit" value="Reset Password" className="w-full" />
         </div>
       </form>
+      <div className="mt-4">
+        <FormCopyright/>
+      </div>
     </div>
   )
 }

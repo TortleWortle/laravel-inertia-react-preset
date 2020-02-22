@@ -1,14 +1,14 @@
 import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { useInput } from "../../hooks/useInput";
-import { useHasError } from "../../hooks/useHasError";
-import ErrorList from "../../components/ErrorList";
+import { useHasError } from "../../hooks/useHasError"
+import { FormTextInput, FormLabel, FormCopyright, FormButton, FormFieldErrors } from "../../components/FormElements"
 
 export default function ConfirmPassword(props) {
   const [password, passwordProps] = useInput();
   const { errors } = props
 
-  const login = (e) => {
+  const confirm = (e) => {
     e.preventDefault();
     Inertia.post('/password/confirm', {
       password,
@@ -16,19 +16,20 @@ export default function ConfirmPassword(props) {
   }
 
   return (
-    <div className="container mx-auto">
-      <h1>Login</h1>
-      {props.flash.status && <div className="rounded p-4 bg-green-300">{props.flash.status}</div>}
-      <form onSubmit={login}>
-        <div className="flex flex-col">
-          <div>
-            <label htmlFor="password">Password: </label>
-            <input {...passwordProps} className={`border ${useHasError(errors, "password") ? 'border-red-500' : ''}`} type="password" id="password" />
-            {useHasError(errors, "password") && <ErrorList errors={errors['password']} />}
-          </div>
-          <input type="submit" value="Confirm Password" />
+    <div className="w-full max-w-xs mx-auto md:mt-32">
+      <form onSubmit={confirm} className="bg-white shadow-md rounded px-8 pt-6 pb-8">
+        <div className="mb-6">
+          <FormLabel htmlFor="password">Password: </FormLabel>
+          <FormTextInput {...passwordProps} hasError={useHasError(errors, "password")} type="password" id="password" />
+          <FormFieldErrors field="password" errors={errors} />
+        </div>
+        <div className="flex items-center justify-between">
+          <FormButton className="w-full" type="submit" value="Confirm Password" />
         </div>
       </form>
+      <div className="mt-4">
+        <FormCopyright />
+      </div>
     </div>
   )
 }
