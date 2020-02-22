@@ -23,12 +23,12 @@ export default function Login(props) {
         <div className="mb-4">
           <FormLabel htmlFor="email">Email: </FormLabel>
           <FormTextInput {...emailProps} hasError={useHasError(errors, "email")} type="email" id="email" />
-          <FormFieldErrors field="email" errors={errors}/>
+          <FormFieldErrors field="email" errors={errors} />
         </div>
         <div className="mb-6">
           <FormLabel htmlFor="password">Password: </FormLabel>
           <FormTextInput {...passwordProps} hasError={useHasError(errors, "password")} type="password" id="password" />
-          <FormFieldErrors field="password" errors={errors}/>
+          <FormFieldErrors field="password" errors={errors} />
         </div>
         <div className="flex items-center justify-between">
           <FormButton type="submit" value="Sign In" />
